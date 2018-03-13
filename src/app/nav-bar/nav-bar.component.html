@@ -28,8 +28,7 @@
             </mat-form-field>
             <div class="alert" *ngIf="!rForm.controls['description'].valid && rForm.controls['description'].touched">{{ alertArea }}</div>
 
-            <label for="validate">Minimo 3 caracteres</label>
-            <mat-checkbox  formControlName="validate" name="validate" value="1" color="primary">Check me!</mat-checkbox>
+            <mat-checkbox  formControlName="validate" name="validate" value="1" color="primary">Minimo 5 caracteres</mat-checkbox>
           </mat-card-content>
           <mat-card-actions>
             <button mat-raised-button color="accent" (click)="toggleDisplay()" [disabled]="!rForm.valid">Enviar</button>

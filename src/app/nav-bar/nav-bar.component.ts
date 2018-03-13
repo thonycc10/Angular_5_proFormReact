@@ -34,8 +34,8 @@ export class NavBarComponent implements OnInit {
     this.rForm.get('validate').valueChanges.subscribe(
       (validate) => {
         if (validate == '1') {
-          this.rForm.get('name').setValidators([Validators.required, Validators.minLength(3)]);
-          this.titleAlert = 'Usted necesita especificar mas de 3 caracteres';
+          this.rForm.get('name').setValidators([Validators.required, Validators.minLength(5)]);
+          this.titleAlert = 'Usted necesita escribir mas de 5 caracteres';
         } else {
           this.rForm.get('name').setValidators(Validators.required);
           this.titleAlert = 'Este controlador es Requerido';
