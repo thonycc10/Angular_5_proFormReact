@@ -6,29 +6,51 @@
   <span [style.color]= "'white'"[hidden]="!loggedIn" ><a mat-button> INFAST P3 </a></span>
 </mat-toolbar>
 
-
-
-<mat-card class="">
-  <button mat-raised-button color="accent" (click)="toggleDisplay()">Togle</button>
-</mat-card>
-
 <div *ngIf="!name; else forminfo">
-  <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)"> <!-- validaciones-->
+
+  <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)" class=""> <!-- validaciones-->
     <div class="form-container">
       <div class="row columns">
-        <h1> Formulario Reactivo </h1>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Favorite food" value="Sushi">
-        </mat-form-field>
+        <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title> Formulario Reactivo</mat-card-title>
+            <mat-card-subtitle>por Thony</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field class="example-full-width">
+              <input formControlName="name" matInput placeholder="Nombre" value="">
+            </mat-form-field>
+            <div class="alert" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched"> {{ titleAlert }}</div>
+
+            <mat-form-field class="example-full-width">
+              <textarea matInput formControlName="description" placeholder="Descripción"></textarea>
+            </mat-form-field>
+            <div class="alert" *ngIf="!rForm.controls['description'].valid && rForm.controls['description'].touched">{{ alertArea }}</div>
+
+            <label for="validate">Minimo 3 caracteres</label>
+            <mat-checkbox  formControlName="validate" name="validate" value="1" color="primary">Check me!</mat-checkbox>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="accent" (click)="toggleDisplay()" [disabled]="!rForm.valid">Enviar</button>
+          </mat-card-actions>
+        </mat-card>
       </div>
-    </div>
+      </div>
   </form>
+    <button mat-raised-button color="accent" (click)="toggleDisplay()">Mostrar Togle</button>
 </div>
 <ng-template #forminfo>
   <div class="form-container">
     <div class="row columns">
-      <h1>{{ name }}}</h1>
-      <p> {{ description }} </p>
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title> <h1> Nombre : {{ name }} </h1></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+      <p> Descripción:  {{ description }} </p>
+        </mat-card-content>
+      </mat-card>
     </div>
   </div>
 </ng-template>
