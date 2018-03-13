@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.example-space {
+  flex: 1 1 auto;
+}
+.margin0 {
+  margin-top: 0px;
+}
